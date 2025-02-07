@@ -1,0 +1,109 @@
+body {
+    background-color: rgb(47, 47, 48);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.H1 {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    transform: translateX(-10%);
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.P1 {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    transform: translateX(-7%);
+    color: white;
+    font-size: 30px;
+}
+.orbit-container {
+    position: relative;
+    width: 500px;
+    height: 500px;             
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) translateY(10px) translateX(10px);
+    animation: none;
+}
+
+.orbit.mercury { width: 100px; height: 100px; animation: none;}
+.orbit.venus { width: 150px; height: 150px; animation: none;}
+.orbit.earth { width: 240px; height: 240px; animation: none;}
+.orbit.mars { width: 300px; height: 300px; animation: none;}
+.orbit.jupiter { width: 450px; height: 470px; animation: none;}
+.orbit.saturn { width: 590px; height: 590px; animation: none;}
+.orbit.uranus { width: 750px; height: 750px; animation: none;}
+.orbit.neptune { width: 850px; height: 850px; animation: none;}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+}
+
+.planet {
+    position: absolute;
+    transform-origin: center;
+    animation: orbit linear infinite;
+    border-radius: 100%;
+}
+
+.planet:hover::after {
+    content: attr(pl-name);
+    position: absolute;
+    top: -20px; /* Position above the planet */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(var(--distance)) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(var(--distance)) rotate(-360deg);
+    }
+}
+
+/* Define planets with different distances and speeds */
+.mercury { --distance: 50px; animation: orbit 3s linear infinite; }
+.venus { --distance: 75px; animation: orbit 5s linear infinite; }
+.earth { --distance: 120px; animation: orbit 7s linear infinite; }
+.mars { --distance: 150px; animation: orbit 9s linear infinite; }
+.jupiter { --distance: 220px; animation: orbit 15s linear infinite; }
+.saturn { --distance: 300px; animation: orbit 20s linear infinite; }
+.uranus { --distance: 370px; animation: orbit 25s linear infinite; }
+.neptune { --distance: 430px; animation: orbit 30s linear infinite; }
+
+/* Center planets using transform */
+.planet {
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
